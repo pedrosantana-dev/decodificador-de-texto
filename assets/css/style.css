@@ -24,14 +24,15 @@ body {
 	max-width: 1440px;
 	padding: 40px;
 	margin: 0 auto;
+	gap: 64px;
 }
 
 .input-area {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	flex: 1;
-	margin: 80px;
+	flex: 3;
+	margin-top: 80px;
 }
 
 .input-area #text-input {
@@ -82,20 +83,30 @@ body {
 	background-color: transparent;
 	cursor: pointer;
 }
+.button:hover {
+	background-color: #ced5ec;
+}
 .button-primary {
 	background-color: #0a3871;
 	color: #ffffff;
+}
+.button-primary:hover {
+	background-color: #0b4489;
 }
 .output-area {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	background-color: #ffffff;
-	max-width: 400px;
+	max-width: 500px;
 	padding: 32px;
 	border-radius: 32px;
 }
 .output-area .empty {
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	justify-content: center;
 	text-align: center;
 }
 .output-area .empty img {
@@ -115,13 +126,16 @@ body {
 	flex-direction: column;
 	gap: 24px;
 }
-.hidden {
-	visibility: hidden;
+.output-area .hidden {
+	display: none;
 }
 
 @media (max-width: 1024px) {
 	.container {
 		flex-direction: column;
+	}
+	.input-area {
+		margin: 56px 16px 16px;
 	}
 	.output-area {
 		max-width: 100%;
@@ -134,9 +148,6 @@ body {
 @media (max-width: 568px) {
 	.container {
 		padding: 24px 0;
-	}
-	.input-area {
-		margin: 16px;
 	}
 	.input-area .input-area__bottom .input-area__bottom__buttons {
 		display: flex;
