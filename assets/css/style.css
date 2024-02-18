@@ -101,6 +101,8 @@ body {
 	max-width: 500px;
 	padding: 32px;
 	border-radius: 32px;
+
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .output-area .empty {
 	display: flex;
