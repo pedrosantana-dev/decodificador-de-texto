@@ -3,6 +3,11 @@ const btnDecrypt = document.getElementById('btnDecrypt');
 const btnCopy = document.getElementById('btnCopy');
 const textarea = document.getElementById('text-input')
 
+window.addEventListener('resize', function () {
+    textarea.style.height = 'auto';
+    textarea.style.height = textarea.scrollHeight + 'px';
+})
+
 textarea.addEventListener('input', function (e) {
     const conteudo = textarea.value;
     const regex = new RegExp(/[a-z0-9\s!]/)
@@ -18,10 +23,8 @@ textarea.addEventListener('paste', function (e) {
     e.preventDefault()
     navigator.clipboard.readText().then(texto => {
         const conteudo = texto.toLowerCase();
-        console.log(conteudo);
         const regex = new RegExp(/^[a-z0-9\s!]+$/gm)
         if(!conteudo.match(regex)){ 
-            console.log('teste falhou');
             textarea.value = conteudo.replace(/[^a-z0-9\s!]/g, '');
         } else {
             textarea.value = conteudo
@@ -31,17 +34,14 @@ textarea.addEventListener('paste', function (e) {
 })
 
 btnEncrypt.addEventListener('click', function () {
-    console.log('clicked');
     const text = textarea.value;
     const encryptedText = encrypt(text);
-    console.log(encryptedText);
     document.querySelector('.text-output > p').innerHTML = encryptedText;
-    document.querySelector('.empty').classList.add('.hidden');
-    document.querySelector('.text-output').classList.remove('.hidden');
+    document.querySelector('.empty').classList.add('hidden');
+    document.querySelector('.text-output').classList.remove('hidden');
 })
 
 btnDecrypt.addEventListener('click', function () {
-    console.log('clicked');
     const text = textarea.value;
     const decryptedText = decrypt(text);
     document.querySelector('.text-output > p').innerHTML = decryptedText;
